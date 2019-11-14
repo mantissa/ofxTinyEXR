@@ -31,7 +31,6 @@ floatImg.update();
     
 ofxTinyEXR exrIO;
 bool saved = exrIO.saveImage(floatImg, "Export.exr");
-    
 if( !saved ) ofLogWarning() << "Failed to save EXR image";
 ```
 
@@ -39,6 +38,7 @@ if( !saved ) ofLogWarning() << "Failed to save EXR image";
 
 ```c++
 // allocate
+ofFbo floatFbo;
 floatFbo.allocate(512, 512, GL_RGB16, 0);
 
 // draw into FBO
@@ -58,6 +58,7 @@ floatImg.getPixels().setFromPixels(pix.getData(), 512, 512, OF_IMAGE_COLOR);
 floatImg.update();
         
 // save file
+ofxTinyEXR exrIO;
 bool saved = exrIO.saveImage(floatImg, "Frame.exr");
 if( !saved ) ofLogWarning() << "Failed to save EXR image";
 ```
