@@ -7,7 +7,7 @@ Based on TinyEXR library by syoyo https://github.com/syoyo/tinyexr
 ```c++
 ofxTinyEXR exrIO;
 ofFloatImage floatImg;
-bool loaded = exrIO.loadImageExp(floatImg, “MyHDRImage.exr");
+bool loaded = exrIO.loadImage(floatImg, “MyHDRImage.exr");
 ```
 
 ## Saving EXR files
