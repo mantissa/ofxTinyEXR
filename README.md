@@ -6,7 +6,8 @@ Based on TinyEXR library by syoyo https://github.com/syoyo/tinyexr
 
 ```c++
 ofxTinyEXR exrIO;
-bool loaded = exrIO.loadImageExp(floatImg, "Export.exr");
+ofFloatImage floatImg;
+bool loaded = exrIO.loadImageExp(floatImg, “MyHDRImage.exr");
 ```
 
 ## Saving EXR files
@@ -22,7 +23,8 @@ float * pix = new float[nPix];
 for(int i=0; i<nPix; i++){
     pix[i] = ofRandomuf();
 }
-    
+
+ofFloatImage floatImg;
 floatImg.allocate(w, h, imgType);
 floatImg.getPixels().setFromPixels(pix, w, h, imgType);
 floatImg.update();
@@ -40,12 +42,10 @@ if( !saved ) ofLogWarning() << "Failed to save EXR image";
 floatFbo.allocate(512, 512, GL_RGB16, 0);
 
 // draw into FBO
-floatFbo.begin();
-    
+floatFbo.begin();    
 ofClear(0);
 ofSetColor(255.0);
 ofDrawEllipse(512/2, 512/2, 512, 512);
-    
 floatFbo.end();
 
 // read to pixels 
@@ -53,10 +53,11 @@ ofFloatPixels pix;
 pix.allocate( 512, 512, OF_IMAGE_COLOR );        
 floatFbo.readToPixels(pix);
         
-// copy to float image & save file
+// copy to float image
 floatImg.getPixels().setFromPixels(pix.getData(), 512, 512, OF_IMAGE_COLOR);
 floatImg.update();
         
+// save file
 bool saved = exrIO.saveImage(floatImg, "Frame.exr");
 if( !saved ) ofLogWarning() << "Failed to save EXR image";
 ```
