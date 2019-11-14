@@ -1,5 +1,5 @@
 # ofxTinyEXR
-EXR reader and writer for OF
+EXR reader and writer for openFrameworks
 Based on TinyEXR library by syoyo https://github.com/syoyo/tinyexr
 
 ## Loading EXR files
