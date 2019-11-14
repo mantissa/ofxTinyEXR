@@ -1,6 +1,7 @@
 # ofxTinyEXR
 EXR reader and writer for openFrameworks
 Based on TinyEXR library by syoyo https://github.com/syoyo/tinyexr
+EXR is a file format for saving HDR/floating point images.
 
 ## Loading EXR files
 
