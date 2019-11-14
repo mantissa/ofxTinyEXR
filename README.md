@@ -4,14 +4,14 @@ Based on TinyEXR library by syoyo https://github.com/syoyo/tinyexr
 
 ##Loading EXR files
 
-`ofxTinyEXR exrIO;
-bool loaded = exrIO.loadImageExp(floatImg, "Export.exr");`
+`
+ofxTinyEXR exrIO;
+bool loaded = exrIO.loadImageExp(floatImg, "Export.exr");
+`
 
 ##Saving EXR files
 
-`// save RGB image
-    
-int w = 512;
+`int w = 512;
 int h = 512;
 int nPix = w * h * 3; 
 ofImageType imgType = OF_IMAGE_COLOR; 
