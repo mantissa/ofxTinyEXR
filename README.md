@@ -2,14 +2,14 @@
 EXR reader and writer for OF
 Based on TinyEXR library by syoyo https://github.com/syoyo/tinyexr
 
-##Loading EXR files
+## Loading EXR files
 
 ```c++
 ofxTinyEXR exrIO;
 bool loaded = exrIO.loadImageExp(floatImg, "Export.exr");
 ```
 
-##Saving EXR files
+## Saving EXR files
 
 ```c++
 int w = 512;
