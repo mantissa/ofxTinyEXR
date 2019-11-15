@@ -68,7 +68,7 @@ if( !saved ) ofLogWarning() << "Failed to save EXR image";
 
 ## Viewing EXR files in Photoshop
 
-When importing EXR files into Adobe Photoshop, you will see a large discrepancy in the gamma of your image. 
+When importing EXR files into Adobe Photoshop, you will see a large discrepancy in the contrast & saturation of your image. 
 
 This discrepancy be resolved in changing the “Proof Condition”:
 
