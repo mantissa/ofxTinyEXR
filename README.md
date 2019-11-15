@@ -65,3 +65,15 @@ ofxTinyEXR exrIO;
 bool saved = exrIO.saveImage(floatImg, "Frame.exr");
 if( !saved ) ofLogWarning() << "Failed to save EXR image";
 ```
+
+## Viewing EXR files in Photoshop
+
+When importing EXR files into Adobe Photoshop, you will see a large discrepancy in the gamma of your image. 
+
+This discrepancy be resolved in changing the “Proof Condition”:
+
+View -> Proof setup -> Custom
+
+Select “HDTV (Rec. 709)” and enable “Preserve RGB Numbers”.
+
+Note: I recommend using [EXR-IO](https://www.exr-io.com/) for importing EXR files.

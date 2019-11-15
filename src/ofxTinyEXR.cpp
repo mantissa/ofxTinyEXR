@@ -4,6 +4,9 @@
 #define TINYEXR_IMPLEMENTATION
 #include "tinyexr.h"
 
+#define STB_IMAGE_WRITE_IMPLEMENTATION
+#include "stb_image_write.h"
+
 // loads OF_IMAGE_GRAYSCALE, OF_IMAGE_COLOR, OF_IMAGE_COLOR_ALPHA
 
 bool ofxTinyEXR::loadImage(ofFloatImage & image, const string filepath){
@@ -341,7 +344,7 @@ bool ofxTinyEXR::saveImage( const ofFloatImage & img, string filepath){
     int width = img.getPixels().getWidth();
     int height = img.getPixels().getHeight();
     int components = img.getPixels().getNumChannels();
-    int save_as_fp16 = 0; // save as float
+    int save_as_fp16 = 0; // save as float, not half
     
     const char* err = NULL; // or nullptr in C++11
 
@@ -353,6 +356,33 @@ bool ofxTinyEXR::saveImage( const ofFloatImage & img, string filepath){
             FreeEXRErrorMessage(err); // release memory of error message.
             return false;
         }
+    }
+    
+    return true;
+}
+
+bool ofxTinyEXR::saveHDRImage( const ofFloatImage & img, string filepath){
+    
+    string filepath_full =ofToDataPath(filepath);
+    const char * filename = filepath_full.c_str();
+    
+    const float * data = img.getPixels().getData();
+    int width = img.getPixels().getWidth();
+    int height = img.getPixels().getHeight();
+    int components = img.getPixels().getNumChannels();
+    
+    ofLogNotice() << components << " components";
+    
+    int ret = stbi_write_hdr(filename, width, height, components, data);
+    
+    //int ret = SaveEXR(data, width, height, components, save_as_fp16, filename, &err);
+    
+    if (ret == 0) {
+        
+        ofLogError() << "Error saving HDR file\n";
+        //FreeEXRErrorMessage(err); // release memory of error message.
+        return false;
+    
     }
     
     return true;
