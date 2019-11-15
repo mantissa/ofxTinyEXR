@@ -70,7 +70,7 @@ if( !saved ) ofLogWarning() << "Failed to save EXR image";
 
 When importing EXR files into Adobe Photoshop, you will see a large discrepancy in the contrast & saturation of your image. 
 
-This discrepancy be resolved in changing the “Proof Condition”:
+This discrepancy be resolved by changing the “Proof Condition”:
 
 View -> Proof setup -> Custom
 
